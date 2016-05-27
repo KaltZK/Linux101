@@ -9,19 +9,22 @@
 
 int main(void) {
 
-	int vector_a[VECTOR_LENGTH], vector_b[VECTOR_LENGTH], vector_c[VECTOR_LENGTH];
+	static int vector_a[VECTOR_LENGTH][VECTOR_LENGTH],
+		vector_b[VECTOR_LENGTH][VECTOR_LENGTH],
+		vector_c[VECTOR_LENGTH][VECTOR_LENGTH];
 
 	double time_start, time_end;	
-	array_fill_with(vector_a, VECTOR_LENGTH, 10);
-	array_fill_with(vector_b, VECTOR_LENGTH, 55);
+	array_fill_with(vector_a, VECTOR_LENGTH,VECTOR_LENGTH, 10);
+	array_fill_with(vector_b, VECTOR_LENGTH,VECTOR_LENGTH, 55);
 
 	time_start = clock();
 	
-	array_add(vector_a, vector_b, vector_c, VECTOR_LENGTH);
+	array_multiply(vector_a, vector_b, vector_c,
+		VECTOR_LENGTH,VECTOR_LENGTH,VECTOR_LENGTH);
 
 	time_end = clock();
 
-	//array_print(vector_c, VECTOR_LENGTH);
+	array_print(vector_c, VECTOR_LENGTH,VECTOR_LENGTH);
 	
 	printf("Time used: %10.9f\n", (double) ( (time_end - time_start) / 1000.0) );
 
